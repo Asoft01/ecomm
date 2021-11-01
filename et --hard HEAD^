@@ -1,0 +1,259 @@
+[33mcommit dc1f815d55742c0f879019831f1c4592db547d12[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Nov 1 14:27:56 2021 +0100
+
+    #205 Laravel 8 E-commerce Tutorial _ Integrate Wishlist _ View_Delete Wishlist Products via Ajax
+
+[33mcommit cf3680a39354a22530c4b55b0fbbd8dde363ac42[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Thu Oct 14 17:48:59 2021 +0100
+
+    Wishlist Feature
+
+[33mcommit 8c691a82b454e0df64fe8d0c85a7d8236886167f[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Sun Oct 3 17:43:34 2021 +0100
+
+    Live Chat
+
+[33mcommit 0babad201629a1c67a091e07ce48682222e19d62[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 27 09:49:45 2021 +0100
+
+    Laravel E-commerce Add-on Feature (III) _ Minimum _ Maximum Cart Value (Manage Dynamically)
+
+[33mcommit 16a4b8b3e542bda89e921a2739e331515770421b[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Fri Sep 24 21:54:03 2021 +0100
+
+    Laravel 8 E-commerce _ Laravel Charts, Graphs and Reports _ Laravel Bar Chart _ Orders Reporting
+
+[33mcommit c104b35459f0580f4cfdebda7bf9820161db3eed[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Wed Sep 22 23:30:09 2021 +0100
+
+    minor changes
+
+[33mcommit 7fec132107f3cfed2f6b6661d6548cee510a07fd[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Fri Sep 17 07:19:25 2021 +0100
+
+    Minor fix
+
+[33mcommit 1d49eefb6fcc94a16441de2f99adb95af3f5ca5c[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Sat Sep 11 22:38:02 2021 +0100
+
+    Laravel 8 E-commerce _ Laravel Rating and Review _ Integrate Laravel Rating System _ Star Rating
+
+[33mcommit af32629873b74259c9a41082eaf4b8887d1ddcd7[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Fri Sep 10 23:01:24 2021 +0100
+
+    Laravel 8 E-commerce Website _ Currency Converter (III) _ Show Prices in all Currency in Detail Page
+
+[33mcommit d771854e036a15488c5f3042bcfd32b349e67f9c[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Fri Sep 10 22:27:17 2021 +0100
+
+    E-commerce Website _ Currency Converter (II) _ Add_Edit_Delete Currencies in Admin Panel
+
+[33mcommit 7ab2604ffa396913ddf439b46e8c48e6afb1f55f[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Fri Sep 10 21:59:42 2021 +0100
+
+     E-commerce _ Currency Converter (I) _ Create currencies Table _ Insert_Display Currencies
+
+[33mcommit a34d9c7b5b58243ee17631cfddfb250c2fe45495[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Fri Sep 10 11:40:35 2021 +0100
+
+    E-commerce _ Admins_Subadmins Roles_Permissions (IV) _ Set View_Edit_Full Permissions
+
+[33mcommit 09b2b17157643c31c842c907bb447ce074e23527[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Thu Sep 9 22:07:26 2021 +0100
+
+    Access Levels
+
+[33mcommit d5c9bb7704a5e0e046edec204f2789a1b26798b7[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Tue Sep 7 12:33:32 2021 +0100
+
+    Minor fix
+
+[33mcommit c7cfd0c4ad3bb02150f03fb073675d6a557c86a5[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Tue Sep 7 08:37:39 2021 +0100
+
+    Minor fix for routing
+
+[33mcommit 909533e110b045577c595f5cd80b0af68ec44025[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Tue Sep 7 08:23:25 2021 +0100
+
+    Minor fix
+
+[33mcommit ae3812ea0d9e4c189b4bddd356ef23a017a3214d[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Tue Sep 7 08:17:17 2021 +0100
+
+    Heroku Updated
+
+[33mcommit 70fd37fb2dda328344c4157750215f339caa4035[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Tue Sep 7 08:13:23 2021 +0100
+
+    Database Seeder
+
+[33mcommit 1fecdcb6f374d59c789472fd45f4bb11c05e2bb3[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Tue Sep 7 00:26:43 2021 +0100
+
+    feat: rubbish error
+
+[33mcommit 55419b79e2e7cf4e7b0110ac06a040cb8c631948[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Tue Sep 7 00:22:24 2021 +0100
+
+    feat: rubbish error
+
+[33mcommit 05ddbe2e008e46871d61dc0f6b3932e975a958ea[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 23:45:35 2021 +0100
+
+    quickfix: try out fix 3
+
+[33mcommit 080a8947aded5876c66c44bb4748bf6a5269109e[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 23:37:18 2021 +0100
+
+    quickfix: try out fix 2
+
+[33mcommit 13dc1c92135c13053d1c8a19b80405b02e7b874d[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 23:23:32 2021 +0100
+
+    quickfix: try out fix 2
+
+[33mcommit 89d177430aecc08b8f8aeb7e672236a1fbcf0323[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 22:47:55 2021 +0100
+
+    quickfix: try out fix
+
+[33mcommit 4974b531aef347912d7d8a34c9f10ddb2139a7d4[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 21:20:23 2021 +0100
+
+    Minor fix
+
+[33mcommit 43c1858ccc1ec273d1d2502d668b9938cdd0a572[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 17:56:14 2021 +0100
+
+    Minor fix
+
+[33mcommit 4e6c7e656984a10c51370a83d614dc857b00e2c8[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 11:38:17 2021 +0100
+
+    Added Procfile
+
+[33mcommit 5391c52a382bc413b88798e524acb05850fd80d5[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 10:37:13 2021 +0100
+
+    Minor changes for github repo
+
+[33mcommit aa20dd4f2abe379250eade9272c70fa505e5abf9[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 08:30:39 2021 +0100
+
+    Laravel E-com _ Admins_Subadmins Roles_Permissions (II) _ Add_Edit Admins_Subadmins from Admin Panel
+
+[33mcommit c6f18234d37b88715a712e82051bb6257606dff0[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Sep 6 01:17:48 2021 +0100
+
+    Roles Access
+
+[33mcommit 879a4eba89aa223ea443efbd7aeb45257b7c4ee8[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Sun Sep 5 23:52:32 2021 +0100
+
+    Admin Roles
+
+[33mcommit 514bf124d7dabbed22f02965c858aeedb4e45bc8[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Sun Sep 5 22:49:25 2021 +0100
+
+    Laravel E-com _ Admins_Subadmins Roles_Permissions (II) _ Add_Edit Admins_Subadmins from Admin Panel
+
+[33mcommit 045bae6f6ce52e7ab135bd06ed88440184a27c2a[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Thu Sep 2 08:30:02 2021 +0100
+
+    Meta Tags for SEO Optimization
+
+[33mcommit 1126ec4e3df022453558886010145c071c292d36[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Thu Sep 2 08:09:07 2021 +0100
+
+    SEO meta title and keywords done
+
+[33mcommit 85a5ff81bb9793bad4c2c9a9c89de9b97ff00b07[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Wed Sep 1 23:11:59 2021 +0100
+
+    Laravel SEO (I) Add Meta Tags in Laravel 8 E-commerce Website _ Laravel Search Engine Optimisation
+
+[33mcommit d5ff14b746001ed7137c752a2e32014451c94c43[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Tue Aug 24 15:43:10 2021 +0100
+
+    Minor fix
+
+[33mcommit ae8c377f6ee354a2dab31964ccff360dad373081[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Aug 23 21:48:43 2021 +0100
+
+    Admin Sub Admin Functionality Working
+
+[33mcommit e13e4fa9f442efda201542b2d7d4279740310992[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Mon Aug 23 13:07:47 2021 +0100
+
+    Admin Sub Admin
+
+[33mcommit 29e08de01eed715890d1eed928eb207e9b6ed37c[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Sat Aug 21 00:49:47 2021 +0100
+
+    ShipRocket API Tutorial _ ShipRocket API Integration with Laravel _ Push Order to ShipRocket Panel
+
+[33mcommit 6430e0c7f216f93d5499e78d4332456ffb9b2cdd[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Thu Aug 19 01:53:12 2021 +0100
+
+    Order Pushed
+
+[33mcommit f20d0b29db6fa9f2987aa0f825a0526fee4fcbc5[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Thu Aug 19 01:16:13 2021 +0100
+
+    ShipRocket API Tutorial _ ShipRocket API Integration with Laravel _ Push Order via Curl with Laravel
+
+[33mcommit c58a4042eb043a43bcd6fb35b4fbc0bf5f463663[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Sun Aug 8 18:30:08 2021 +0100
+
+    Minor Fix
+
+[33mcommit 27c43dbca8114c73c91368f4ded016a7038eeb26[m
+Author: Adeleke Hammed <lekhad19@gmail.com>
+Date:   Sun Aug 8 18:09:14 2021 +0100
+
+    177 Make E-commerce Website in Laravel 8 _ CMS _ Dynamic Pages (IV) _ Display CMS Pages at Front
+
+[33mcommit 9b5f09e9f15ad768826f
