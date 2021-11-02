@@ -274,6 +274,14 @@ $(document).ready(function(){
             }
         })
     });
+
+    // Cancel Order 
+    $(document).on('click', '.btnCancelOrder', function(){
+        var result = confirm("Want to cancel this Order?");
+        if(!result){
+            return false;
+        }
+    });
     
 		// validate register form on keyup and submit
 		$("#registerForm").validate({

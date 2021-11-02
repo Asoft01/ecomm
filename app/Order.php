@@ -113,4 +113,9 @@ class Order extends Model
         // return array(['status' => $status, 'message' => $message]);
         return array('status' => $status, 'message' => $message);
     }
+
+    public static function getOrderStatus($order_id){
+        $getOrderStatus = Order::select('order_status')->where('id', $order_id)->first();
+        return $getOrderStatus->order_status;
+    }
 }

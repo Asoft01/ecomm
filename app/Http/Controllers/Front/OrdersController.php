@@ -20,4 +20,8 @@ class OrdersController extends Controller
         // dd($orderDetails); die;
         return view('front.orders.order_details')->with(compact('orderDetails'));
     }
+
+    public function orderCancel($id){
+        echo $id; die;
+    }
 }

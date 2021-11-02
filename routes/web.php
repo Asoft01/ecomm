@@ -259,6 +259,9 @@ Route::namespace('Front')->group(function(){
         // User Order Details 
         Route::get('/orders/{id}', 'OrdersController@orderDetails');
 
+        // User Order Cancel
+        Route::get('/orders/{id}/cancel', 'OrdersController@orderCancel');
+
         // Check User Password
         Route::post('check-user-pwd', 'UsersController@chkUserPassword');
 
