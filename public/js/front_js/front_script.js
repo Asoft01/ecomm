@@ -267,7 +267,8 @@ $(document).ready(function(){
             url: '/delete-wishlist-item',
             data: {'wishlistid': wishlistid},
             success: function(resp){
-
+                $('.totalWishlistItems').html(resp.totalWishlistItems);
+                $("#AppendWishlistItems").html(resp.view);
             }, error: function(){
                 alert("Error");
             }

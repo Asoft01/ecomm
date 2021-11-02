@@ -445,10 +445,11 @@ class ProductsController extends Controller
             // echo "<pre>"; print_r($data); die;
             Wishlist::where('id', $data['wishlistid'])->delete();
             $userWishlistItems = Wishlist::userWishlistItems();
-            // return response()->json([
-            //     'totalCartItems' => $totalCartItems,
-            //     'view'=> (String)View::make('front.products.cart_items')->with(compact('userCartItems'))
-            // ]);
+            $totalWishlistItems = totalWishlistItems();
+            return response()->json([
+                'totalWishlistItems' => $totalWishlistItems,
+                'view'=> (String)View::make('front.products.wishlist_items')->with(compact('userWishlistItems'))
+            ]);
         }
     }
 

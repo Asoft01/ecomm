@@ -8,7 +8,7 @@
 		<li><a href="{{ url('/') }}">Home</a> <span class="divider">/</span></li>
 		<li class="active"> Wishlist</li>
     </ul>
-	<h3>  Wishlist [ <small><span> {{ count($userWishlistItems) }} </span> Item(s) </small>]<a href="{{ url('/') }}" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
+	<h3>  Wishlist [ <small><span class="totalWishlistItems"> {{ (totalWishlistItems()) }} </span> Item(s) </small>]<a href="{{ url('/') }}" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
 	<hr class="soft"/>
     @if(Session::has('success_message'))
 		<div class="alert alert-success" role="alert" style="margin-top:10px;">
@@ -28,7 +28,7 @@
 		</div>
 		<?php Session::forget('error_message'); ?>			
 	@endif		
-	<div>
+	<div id="AppendWishlistItems">
 		@include('front.products.wishlist_items')
 	</div>
 	</div>
