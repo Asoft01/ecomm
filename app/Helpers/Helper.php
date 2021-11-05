@@ -21,4 +21,5 @@ function totalWishlistItems(){
     }
     return $totalWishlistItems;
 }
+
 ?>

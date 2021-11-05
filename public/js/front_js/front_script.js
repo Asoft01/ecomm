@@ -272,7 +272,7 @@ $(document).ready(function(){
             }, error: function(){
                 alert("Error");
             }
-        })
+        });
     });
 
     // Cancel Order 
