@@ -263,6 +263,12 @@
                                           @if($orderDetails['is_pushed'] ==1)
                                             <span style="color:green">Order Pushed to ShipRocket </span>
                                           @endif
+
+                                          @if($log['reason'] != "")
+                                            <br>
+                                            {{ $log['reason'] }}
+
+                                          @endif
                                           <br>
                                       {{ date('j F, Y, g:i a', strtotime($log['created_at'])) }}
                                       <hr><hr>

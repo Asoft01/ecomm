@@ -277,11 +277,18 @@ $(document).ready(function(){
 
     // Cancel Order 
     $(document).on('click', '.btnCancelOrder', function(){
+        var reason = $("#cancelReason").val();
+        if(reason == ""){
+            alert("Please select reason for cancelling order");
+            return false;
+        }
         var result = confirm("Want to cancel this Order?");
         if(!result){
             return false;
         }
     });
+
+
     
 		// validate register form on keyup and submit
 		$("#registerForm").validate({

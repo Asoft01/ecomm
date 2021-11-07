@@ -8,7 +8,24 @@
 	<h3> Orders </h3>	
     <hr class="soft"/>
     
-	
+    @if(Session::has('error_message'))
+        <div class="alert alert-danger" role="alert" style="margin-top:10px;">
+        {{ Session::get('error_message') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <?php Session::forget('error_message'); ?>			
+    @endif	
+        
+    @if(Session::has('success_message'))
+    <div class="alert alert-success alert-dismissable fade show" role="alert" style="margin-top:10px;">
+      {{ Session::get('success_message') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    @endif
 	<div class="row">
 		<div class="span8">	
 			<table class="table table-striped table-bordered">

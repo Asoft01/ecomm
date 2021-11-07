@@ -1,6 +1,7 @@
 <?php 
 use App\Product; 
 use App\Order;
+//  echo $getOrderStatus = Order::getOrderStatus($orderDetails['id']); die;
 $getOrderStatus = Order::getOrderStatus($orderDetails['id']); 
 ?>
 @extends('layouts.front_layout.front_layout')
@@ -12,9 +13,32 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
     </ul>
 	<h3> Orders #{{ $orderDetails['id'] }} Details
         @if($getOrderStatus == "New")
-            <span style="float:right;"><a href="{{ url('orders/'.$orderDetails['id'].'/cancel') }}"> <button type="button" class="btn block btnCancelOrder">Cancel Order </button></span>
+            {{-- <span style="float:right;"><a href="{{ url('orders/'.$orderDetails['id'].'/cancel') }}"> <button type="button" class="btn block btnCancelOrder">Cancel Order </button></span> --}}
+        <!-- Button trigger modal -->
+        <button style="float:right" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Cancel Order
+        </button>
         @endif
-    </h3>	
+    </h3>
+    @if(Session::has('success_message'))
+        <div class="alert alert-success" role="alert" style="margin-top:10px;">
+        {{ Session::get('success_message') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <?php Session::forget('success_message'); ?>
+    @endif
+    @if(Session::has('error_message'))
+        <div class="alert alert-danger" role="alert" style="margin-top:10px;">
+        {{ Session::get('error_message') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <?php Session::forget('error_message'); ?>			
+    @endif	
+            	
     <hr class="soft"/>
 
     <div class="row">
@@ -136,4 +160,32 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
 	</div>	
 	
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form method="POST" action="{{ url('orders/'.$orderDetails['id'].'/cancel') }}">
+        @csrf
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Reason for Cancellation</h5>
+                </div>
+                <div class="modal-body">
+                    <select name="reason" id="cancelReason">
+                        <option value="">Select Reason</option>
+                        <option value="Order Created by Mistake">Order Created by Mistake</option>
+                        <option value="Item Not Arrive on Time">Item Not Arrive on Time</option>
+                        <option value="Shipping Cost Too High">Shipping Cost Too High</option>
+                        <option value="Found Cheaper Somewhere Else">Found Cheaper Somewhere Else</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary btnCancelOrder">Cancel Order</button>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>
 @endsection

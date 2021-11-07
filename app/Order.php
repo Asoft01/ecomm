@@ -118,4 +118,5 @@ class Order extends Model
         $getOrderStatus = Order::select('order_status')->where('id', $order_id)->first();
         return $getOrderStatus->order_status;
     }
+
 }

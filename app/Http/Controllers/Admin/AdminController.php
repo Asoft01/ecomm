@@ -327,7 +327,7 @@ class AdminController extends Controller
         $title = "Other Settings";
         if($request->isMethod('post')){
             $data = $request->all();
-            OtherSetting::where(['min_cart_value' => $data['min_cart_value'], 'max_cart_value' => $data['max_cart_value']]);
+            OtherSetting::where('id', 1)->update(['min_cart_value' => $data['min_cart_value'], 'max_cart_value' => $data['max_cart_value']]);
             $message ="Min/Max Cart Value Updated Successfully";
             Session::flash('success_message', $message);
             return redirect()->back();

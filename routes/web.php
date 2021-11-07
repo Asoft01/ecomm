@@ -260,7 +260,11 @@ Route::namespace('Front')->group(function(){
         Route::get('/orders/{id}', 'OrdersController@orderDetails');
 
         // User Order Cancel
-        Route::get('/orders/{id}/cancel', 'OrdersController@orderCancel');
+
+        Route::match(['GET', 'POST'], '/orders/{id}/cancel', 'OrdersController@orderCancel');
+
+        // User Order Cancel
+        // Route::get('/orders/{id}/cancel', 'OrdersController@orderCancel');
 
         // Check User Password
         Route::post('check-user-pwd', 'UsersController@chkUserPassword');
