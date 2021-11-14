@@ -15,10 +15,18 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
         @if($getOrderStatus == "New")
             {{-- <span style="float:right;"><a href="{{ url('orders/'.$orderDetails['id'].'/cancel') }}"> <button type="button" class="btn block btnCancelOrder">Cancel Order </button></span> --}}
         <!-- Button trigger modal -->
-        <button style="float:right" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button style="float:right" type="button" class="btn btn-primary" data-toggle="modal" data-target="#cancelModal">
             Cancel Order
         </button>
         @endif
+        @if($getOrderStatus == "Delivered")
+            {{-- <span style="float:right;"><a href="{{ url('orders/'.$orderDetails['id'].'/cancel') }}"> <button type="button" class="btn block btnCancelOrder">Cancel Order </button></span> --}}
+        <!-- Button trigger modal -->
+        <button style="float:right" type="button" class="btn btn-primary" data-toggle="modal" data-target="#returnModal">
+            Return Order
+        </button>
+        @endif
+        
     </h3>
     @if(Session::has('success_message'))
         <div class="alert alert-success" role="alert" style="margin-top:10px;">
@@ -162,13 +170,13 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
     <form method="POST" action="{{ url('orders/'.$orderDetails['id'].'/cancel') }}">
         @csrf
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Reason for Cancellation</h5>
+                <h5 class="modal-title" id="cancelModalLabel">Reason for Cancellation</h5>
                 </div>
                 <div class="modal-body">
                     <select name="reason" id="cancelReason">
@@ -183,6 +191,47 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary btnCancelOrder">Cancel Order</button>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>
+
+  <!-- Return -- Modal -->
+  <div class="modal fade" id="returnModal" tabindex="-1" role="dialog" aria-labelledby="returnModalLabel" aria-hidden="true" style="width: 380px" >
+    <form method="POST" action="{{ url('orders/'.$orderDetails['id'].'/return') }}">
+        @csrf
+        <div class="modal-dialog" role="document" align="center">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="returnModalLabel">Reason for Return</h5>
+                </div>
+                <div class="modal-body">
+                    <select name="product_info" id="returnProduct">
+                        <option value="">Select Product</option>
+                        @foreach ($orderDetails['orders_products'] as $product)
+                            <option value="{{ $product['product_code'] }}--{{ $product['product_size'] }}">{{ $product['product_code'] }}--{{ $product['product_size'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="modal-body">
+                    <select name="reason" id="returnReason">
+                        <option value="">Select Reason</option>
+                        <option value="Performance or quality not adequaate">Performance or quality not adequaate</option>
+                        <option value="Product damaged, but shipping box OK">Product damaged, but shipping box OK</option>
+                        <option value="Item arrived too late">Item arrived too late</option>
+                        <option value="Wrong Item was sent">Wrong Item was sent</option>
+                        <option value="Item defective was sent">Item defective was sent</option>
+                        <option value="Item defective or doesn't work">Item defective or doesn't work</option>
+                        </select>
+                </div>
+                <div class="modal-body">
+                    <textarea name="comment" placeholder="Comment"></textarea>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary btnReturnOrder">Return Order</button>
                 </div>
             </div>
         </div>

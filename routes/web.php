@@ -263,6 +263,9 @@ Route::namespace('Front')->group(function(){
 
         Route::match(['GET', 'POST'], '/orders/{id}/cancel', 'OrdersController@orderCancel');
 
+        // User Order Return 
+        Route::match(['GET', 'POST'], 'orders/{id}/return', 'OrdersController@orderReturn');
+
         // User Order Cancel
         // Route::get('/orders/{id}/cancel', 'OrdersController@orderCancel');
 

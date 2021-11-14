@@ -210,3 +210,7 @@ php artisan make:model Wishlist
 php artisan make:seeder WishlistsTableSeeder
 
 php artisan db:seed
+
+php artisan make:migration create_return_requests_table
+
+php artisan make:seeder ReturnRequestTableSeeder

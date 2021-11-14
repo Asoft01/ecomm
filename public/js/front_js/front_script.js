@@ -288,47 +288,63 @@ $(document).ready(function(){
         }
     });
 
-
+    $(document).on('click', '.btnReturnOrder', function(){
+        var product = $("#returnProduct").val();
+        if(product== ""){
+            alert("Please select which product you want to return");
+            return false;
+        }
+        
+        var reason = $("#returnReason").val();
+        if(reason == ""){
+            alert("Please select reason for returning order");
+            return false;
+        }
+        var result = confirm("Want to return this Order?");
+        if(!result){
+            return false;
+        }
+    });
     
-		// validate register form on keyup and submit
-		$("#registerForm").validate({
-			rules: {
-				name: "required",
-				mobile: {
-					required: true,
-                    minlength: 10,
-                    maxlength: 10,
-                    digits:true
-				},
-				email: {
-					required: true,
-                    email: true,
-                    remote: "check-email"
-                },
-                password: {
-					required: true,
-					minlength: 6
-				}
-			},
-			messages: {
-				name: "Please enter your Name",
-				mobile: {
-					required: "Please enter a Mobile",
-					minlength: "Your mobile must consist of at least 10 digits",
-					maxlength: "Your mobile must consist of at least 10 digits",
-					digits: "Your enter a valid Mobile"
-                },
-                email: {
-                    required: "Please enter a Email",
-                    minlength: "Please enter a valid Email",
-                    remote: "Email Already Exists"
-                },
-				password: {
-					required: "Please choose your password",
-					minlength: "Your password must be at least 6 characters long"
-				}
-			}
-        });
+    // validate register form on keyup and submit
+    $("#registerForm").validate({
+        rules: {
+            name: "required",
+            mobile: {
+                required: true,
+                minlength: 10,
+                maxlength: 10,
+                digits:true
+            },
+            email: {
+                required: true,
+                email: true,
+                remote: "check-email"
+            },
+            password: {
+                required: true,
+                minlength: 6
+            }
+        },
+        messages: {
+            name: "Please enter your Name",
+            mobile: {
+                required: "Please enter a Mobile",
+                minlength: "Your mobile must consist of at least 10 digits",
+                maxlength: "Your mobile must consist of at least 10 digits",
+                digits: "Your enter a valid Mobile"
+            },
+            email: {
+                required: "Please enter a Email",
+                minlength: "Please enter a valid Email",
+                remote: "Email Already Exists"
+            },
+            password: {
+                required: "Please choose your password",
+                minlength: "Your password must be at least 6 characters long"
+            }
+        }
+    });
 
         // validate register form on keyup and submit
 		$("#loginForm").validate({

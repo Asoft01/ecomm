@@ -30,6 +30,7 @@ class OrdersController extends Controller
             if(isset($data['reason']) && empty($data['reason'])){
                 return redirect()->back();
             }
+            
             // echo "<pre>"; print_r($data); die;
 
             // Get User ID from Order
@@ -41,6 +42,7 @@ class OrdersController extends Controller
             // echo $user_id_auth;
             // echo "---";
             // echo $user_id_order->user_id; die;
+
             if($user_id_auth == $user_id_order->user_id){
                 // echo $id; die;
                 // Update Order Status to be Cancelled
@@ -96,4 +98,12 @@ class OrdersController extends Controller
     //         return redirect('orders');
     //     }
     // }
+
+    public function orderReturn($id, Request $request){
+        if($request->isMethod('post')){
+            $data= $request->all();
+            echo $id;
+            echo "<pre>"; print_r($data); die;
+        }
+    }
 }
