@@ -139,6 +139,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
 
         // Return requests 
         Route::get('return-requests', 'OrdersController@returnRequests');
+        Route::post('return-requests/update', 'OrdersController@returnRequestUpdate');
     });
     
 });

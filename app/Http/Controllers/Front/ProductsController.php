@@ -855,7 +855,7 @@ class ProductsController extends Controller
         }
     }
 
-    public function addEditDeliveryAddress($id= null, Request $request){
+    public function addEditDeliveryAddress($id, Request $request){
         if($id == null){
             // Add Delivery Address
             $title = "Add Delivery Address";

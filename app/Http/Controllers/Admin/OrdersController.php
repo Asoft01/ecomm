@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrdersLog;
+use App\OrdersProduct;
 use Session;
 use App\User;
 use App\Sms;
@@ -407,5 +408,37 @@ class OrdersController extends Controller
         $return_requests = ReturnRequest::get()->toArray();
         // dd($return_requests);
         return view('admin.orders.return_requests')->with(compact('return_requests'));
+    }
+
+    public function returnRequestUpdate(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            // echo "<pre>"; print_r($data); die;
+            
+            // Get Return Details
+            $returnDetails = ReturnRequest::where('id', $data['return_id'])->first()->toArray();
+
+            // Update Return Status in Return_Request table
+            ReturnRequest::where('id', $data['return_id'])->update(['return_status' => $data['return_status']]);
+
+            // Update Return Status in Orders Products Table
+            OrdersProduct::where(['order_id'=> $returnDetails['order_id'], 'product_code' => $returnDetails['product_code'], 'product_size'=> $returnDetails['product_size']])->update(['item_status'=> 'Return '.$data['return_status']]);
+
+            // Get User Details 
+            $userDetails= User::select('name', 'email')->where('id', $returnDetails['user_id'])->first()->toArray();
+
+            // Send Return Status Email 
+            $email = $userDetails['email'];
+            $return_status= $data['return_status'];
+
+            $messageData = ['userDetails' => $userDetails, 'returnDetails' => $returnDetails, 'return_status'=> $return_status];
+            Mail::send('emails.return_request', $messageData, function ($message) use($email, $return_status) {
+                $message->to($email)->subject('Return Request '.$return_status);
+            });
+
+            $message = 'Return Request has been '.$return_status. ' and email sent to user';
+            session::flash('success_message', $message);
+            return redirect('admin/return-requests');
+        }
     }
 }
