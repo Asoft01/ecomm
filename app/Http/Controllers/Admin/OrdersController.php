@@ -423,7 +423,7 @@ class OrdersController extends Controller
 
             // Update Return Status in Orders Products Table
             OrdersProduct::where(['order_id'=> $returnDetails['order_id'], 'product_code' => $returnDetails['product_code'], 'product_size'=> $returnDetails['product_size']])->update(['item_status'=> 'Return '.$data['return_status']]);
-
+            
             // Get User Details 
             $userDetails= User::select('name', 'email')->where('id', $returnDetails['user_id'])->first()->toArray();
 
