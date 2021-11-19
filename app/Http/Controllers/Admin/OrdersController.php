@@ -12,6 +12,7 @@ use Session;
 use App\User;
 use App\Sms;
 use App\OrderStatus;
+use App\ReturnRequest;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Auth;
@@ -399,5 +400,12 @@ class OrdersController extends Controller
          $ordersCount = array($current_month_orders, $before_1_month_orders, $before_2_month_orders, $before_3_month_orders);
         // echo "<pre>"; print_r($ordersCount); die;
         return view('admin.orders.view_orders_charts')->with(compact('ordersCount'));
+    }
+
+    public function returnRequests(){
+        Session::put('page', 'return_requests');
+        $return_requests = ReturnRequest::get()->toArray();
+        // dd($return_requests);
+        return view('admin.orders.return_requests')->with(compact('return_requests'));
     }
 }

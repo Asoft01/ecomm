@@ -39,6 +39,23 @@ class UsersController extends Controller
                 $user->password = bcrypt($data['password']);
                 $user->status= 0;
 
+                // Curl Request to Create User in Basic E-Commerce Website
+
+                // $postdata = json_encode($data);
+                $postdata = $data;
+                // This is used to save the data in another website using the API
+                $url = "http://127.0.0.1:8010/api/register-user";
+                $ch = curl_init($url);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch, CURLOPT_POST, 1); // Because we want to post the data to another website it will be one
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type', 'application/json'));
+                $result = curl_exec($ch);
+                curl_close($ch);
+                // print_r($result); die;
                 // Set Default Timezones to India for Users Model Only
                 date_default_timezone_set("Asia/Kolkata");
                 $user->created_at = date('Y-m-d H:i:s');

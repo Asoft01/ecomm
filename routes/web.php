@@ -136,6 +136,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
 
         Route::get('ratings', 'RatingsController@ratings');
         Route::post('update-rating-status', 'RatingsController@updateRatingStatus');
+
+        // Return requests 
+        Route::get('return-requests', 'OrdersController@returnRequests');
     });
     
 });
@@ -182,16 +185,13 @@ Route::namespace('Front')->group(function(){
     // });
 
     // CMS Routes
+    
     $cmsUrls = CmsPage::select('url')->where('status', 1)->get()->pluck('url')->toArray();
 
+    // $cmsUrls = CmsPage::cmsUrls();
     foreach ($cmsUrls as $url){
         Route::get('/'.$url, 'CmsController@cmsPage');
     }
-
-    // $cmsUrls = CmsPage::cmsUrls();
-    // foreach ($cmsUrls as $url){
-        // Route::get('/'.$url, 'CmsController@cmsPage');
-    // }
 
     // Product Detail Route
     Route::get('/product/{id}', 'ProductsController@detail');

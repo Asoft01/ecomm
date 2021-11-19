@@ -147,6 +147,7 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
                     <th>Product Size</th>
                     <th>Product Color</th>
                     <th>Product Qty</th>
+                    <th>Item Status</th>
                     {{-- <th>Details</th> --}}
                 </tr>
                 @foreach ($orderDetails['orders_products'] as $product)
@@ -161,6 +162,7 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
                         <td>{{ $product['product_size'] }}</td>
                         <td>{{ $product['product_color'] }}</td>
                         <td>{{ $product['product_qty'] }}</td>
+                        <td>{{ $product['item_status'] }}</td>
                     </tr>
                 @endforeach
             </table>
@@ -210,13 +212,15 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
                     <select name="product_info" id="returnProduct">
                         <option value="">Select Product</option>
                         @foreach ($orderDetails['orders_products'] as $product)
-                            <option value="{{ $product['product_code'] }}--{{ $product['product_size'] }}">{{ $product['product_code'] }}--{{ $product['product_size'] }}</option>
+                            @if($product['item_status'] != "Return Intitiated")
+                                <option value="{{ $product['product_code'] }}--{{ $product['product_size'] }}">{{ $product['product_code'] }}--{{ $product['product_size'] }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
 
                 <div class="modal-body">
-                    <select name="reason" id="returnReason">
+                    <select name="return_reason" id="returnReason">
                         <option value="">Select Reason</option>
                         <option value="Performance or quality not adequaate">Performance or quality not adequaate</option>
                         <option value="Product damaged, but shipping box OK">Product damaged, but shipping box OK</option>

@@ -269,16 +269,28 @@
 
             @if(Session::get('page')=="ratings")
                 <?php $active= "active"; ?>
-              @else
-                <?php $active = ""; ?>
-              @endif
+            @else
+              <?php $active = ""; ?>
+            @endif
               <li class="nav-item">
                 <a href="{{ url('admin/ratings') }}" class="nav-link {{ $active }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ratings</p>
                 </a>
               </li>
-              
+
+              <!-- Return Request -->
+              @if(Session::get('page')=="return_requests")
+                <?php $active= "active"; ?>
+                @else
+                  <?php $active = ""; ?>
+                @endif
+                  <li class="nav-item">
+                    <a href="{{ url('admin/return-requests') }}" class="nav-link {{ $active }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Return Requests</p>
+                    </a>
+                  </li>
             </ul>
           </li>
           
