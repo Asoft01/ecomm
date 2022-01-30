@@ -21,10 +21,10 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
         @endif
         @if($getOrderStatus == "Delivered")
             {{-- <span style="float:right;"><a href="{{ url('orders/'.$orderDetails['id'].'/cancel') }}"> <button type="button" class="btn block btnCancelOrder">Cancel Order </button></span> --}}
-        <!-- Button trigger modal -->
-        <button style="float:right" type="button" class="btn btn-primary" data-toggle="modal" data-target="#returnModal">
-            Return Order
-        </button>
+            <!-- Button trigger modal -->
+            <button style="float:right" type="button" class="btn btn-primary" data-toggle="modal" data-target="#returnModal">
+                Return/Exchange Order
+            </button>
         @endif
         
     </h3>
@@ -206,8 +206,16 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
         <div class="modal-dialog" role="document" align="center">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="returnModalLabel">Reason for Return</h5>
+                <h5 class="modal-title" id="returnModalLabel">Reason for Return/Exchange</h5>
                 </div>
+                <div class="modal-body">
+                    <select name="return_exchange" id="returnExchange">
+                        <option value="">Select Return/Exchange</option>
+                        <option value="Return">Return</option>
+                        <option value="Exchange">Exchange</option>
+                    </select>
+                </div>
+
                 <div class="modal-body">
                     <select name="product_info" id="returnProduct">
                         <option value="">Select Product</option>
@@ -219,6 +227,11 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
                     </select>
                 </div>
 
+                <div class="modal-body productSizes">
+                    <select name="required_size" id="productSizes">
+                        <option value="">Select Required Size</option>
+                    </select>
+                </div>
                 <div class="modal-body">
                     <select name="return_reason" id="returnReason">
                         <option value="">Select Reason</option>
@@ -228,14 +241,17 @@ $getOrderStatus = Order::getOrderStatus($orderDetails['id']);
                         <option value="Wrong Item was sent">Wrong Item was sent</option>
                         <option value="Item defective was sent">Item defective was sent</option>
                         <option value="Item defective or doesn't work">Item defective or doesn't work</option>
+                        <option value="Require Smaller Size">Require Smaller Size</option>
+                        <option value="Require Larger Size">Require Larger Size</option>
                         </select>
                 </div>
+
                 <div class="modal-body">
                     <textarea name="comment" placeholder="Comment"></textarea>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary btnReturnOrder">Return Order</button>
+                <button type="submit" class="btn btn-primary btnReturnOrder">Submit</button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $(".productSizes").hide();
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -288,7 +289,44 @@ $(document).ready(function(){
         }
     });
 
+    $("#returnExchange").change(function(){
+        var return_exchange = $(this).val();
+        if(return_exchange== "Exchange"){
+            $(".productSizes").show();
+        }else{
+            $(".productSizes").hide();
+        }
+    });
+
+    $("#returnProduct").change(function(){
+        var product_info = $(this).val();
+        // alert(product_info); return false;
+        var return_exchange = $('#returnExchange').val();
+        if(return_exchange== "Exchange"){
+            // return(return_exchange);
+            $.ajax({
+                type: 'post',
+                url: '/get-product-sizes',
+                // this is sent to OrdersController to the getProductSizes functions
+                data: {product_info: product_info},
+                success:function(resp){
+                    // alert(resp);
+                    $("#productSizes").html(resp);
+                }, error: function(){
+                    alert("Error");
+                }
+            })
+        }
+    });
+
+
+    // Return Order
     $(document).on('click', '.btnReturnOrder', function(){
+        var return_exchange = $("#returnExchange").val();
+        if(return_exchange == ""){
+            alert("Please select if you want to return or exchange?");
+            return false;
+        }
         var product = $("#returnProduct").val();
         if(product== ""){
             alert("Please select which product you want to return");
@@ -300,11 +338,14 @@ $(document).ready(function(){
             alert("Please select reason for returning order");
             return false;
         }
-        var result = confirm("Want to return this Order?");
+        var result = confirm("Want to return/exchange this Order?");
         if(!result){
             return false;
         }
+
     });
+
+
     
     // validate register form on keyup and submit
     $("#registerForm").validate({
@@ -587,3 +628,32 @@ $(document).ready(function(){
         })
     });
 });
+
+function addSubscriber(){
+    var subscriber_email = $("#subscribe_email").val();
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    // alert(subscriber_email);
+    // alert(regex.test(subscriber_email));
+    if(regex.test(subscriber_email) == false){
+        alert("Please enter valid Email!");
+        return false;
+    }
+
+    $.ajax({
+        type: 'post',
+        url: '/add-subscriber-email',
+        data: {
+            subscriber_email: subscriber_email
+        },
+        success: function(resp){
+            // alert(resp);
+            if(resp == "exists"){
+                alert("Subscriber email already exist");
+            }else if(resp == "inserted"){ 
+                alert("Thanks for Subscribing!");
+            }
+        }, error:function(){
+            alert("Error");
+        }
+    });
+}

@@ -487,6 +487,34 @@ $(document).ready(function(){
             })
         });
 
+      // Update Shipping Status
+    // $(".updateBrandStatus").click(function(){
+        $(document).on('click', '.updateSubscriberStatus', function(){
+            // var status = $(this).text();
+            var status = $(this).children("i").attr("status");
+            // alert(status); return false;
+            var subscriber_id= $(this).attr('subscriber_id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'post',
+                url: '/admin/update-subscriber-status',
+                data: {status:status, subscriber_id: subscriber_id},
+                success: function(resp){
+                    // alert(resp['status']);
+                    // alert(resp['section_id']);
+                    if(resp['status']== 0){
+                        $("#subscriber-"+subscriber_id).html("<i class='fas fa-toggle-off' aria-hidden='true' status='Inactive'>");
+                    }else if(resp['status']== 1){
+                        $("#subscriber-"+subscriber_id).html("<i class='fas fa-toggle-on' aria-hidden='true' status='Active'>");
+                    }
+                }, error: function(){
+                    alert("Error");
+                }
+            });
+        });
+
 
     // Confirm Deletion with Sweetalert
     //  $(".confirmDelete").click(function(){

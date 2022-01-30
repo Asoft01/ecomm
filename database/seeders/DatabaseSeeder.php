@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(CurrenciesTableSeeder::class);
         // $this->call(RatingsTableSeeder::class);
         // $this->call(WishlistsTableSeeder::class);
-        $this->call(ReturnRequestTableSeeder::class);
+        // $this->call(ReturnRequestTableSeeder::class);
+        // $this->call(ExchangeRequestTableSeeder::class);
+        $this->call(NewsletterSubscriberTableSeeder::class);
     }
 }

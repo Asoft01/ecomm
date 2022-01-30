@@ -91,6 +91,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         Route::get('view-order-invoice/{id}', 'OrdersController@viewOrderInvoice');
         Route::get('print-pdf-invoice/{id}', 'OrdersController@printPDFInvoice');
 
+        // Export Orders
+        Route::get('export-orders', 'OrdersController@exportOrders');
+
         // View Order Charts
         Route::get('view-orders-charts', 'OrdersController@viewOrdersCharts');
 
@@ -108,6 +111,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         // View Users Charts
         Route::get('view-users-charts', 'UsersController@viewUsersCharts');
         Route::get('view-users-countries', 'UsersController@viewUsersCountries');
+
+        // Export Users
+        Route::get('export-users', 'UsersController@exportUsers');
 
         // CMS Pages
         Route::get('cms-pages', 'CmsController@cmsPages');
@@ -140,6 +146,22 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         // Return requests 
         Route::get('return-requests', 'OrdersController@returnRequests');
         Route::post('return-requests/update', 'OrdersController@returnRequestUpdate');
+
+        // Exchange Requests 
+        Route::get('exchange-requests', 'OrdersController@exchangeRequests');
+        Route::post('exchange-requests/update', 'OrdersController@exchangeRequestUpdate');
+
+        // Newsletter Subscribers
+        Route::get('newsletter-subscribers', 'NewsletterController@newsletterSubscribers');
+        Route::post('update-subscriber-status', 'NewsletterController@updateSubscriberStatus');
+        Route::get('delete-subscriber/{id}', 'NewsletterController@deleteSubscriber');
+        Route::get('export-newsletter-emails', 'NewsletterController@exportsNewsletterEmails');
+
+        // Import COD Pincodes
+        Route::match(['get', 'post'], 'update-cod-pincodes', 'ImportController@updateCODPincodes');
+
+        // Import Prepaid Pincodes
+        Route::match(['get', 'post'], 'update-prepaid-pincodes', 'ImportController@updatePrepaidPincodes');
     });
     
 });
@@ -248,6 +270,9 @@ Route::namespace('Front')->group(function(){
 
     // Add Rating Review 
     Route::match(['GET', 'POST'], '/add-rating', 'RatingsController@addRating');
+
+    // Add Subscriber Email 
+    Route::post('/add-subscriber-email', 'NewsletterController@addSubscriber');
     
     Route::group(['middleware'=>['auth']], function(){
 
@@ -266,6 +291,9 @@ Route::namespace('Front')->group(function(){
 
         // User Order Return 
         Route::match(['GET', 'POST'], 'orders/{id}/return', 'OrdersController@orderReturn');
+
+        // Get Products Sizes in case of Order Exchange Request
+        Route::post('get-product-sizes', 'OrdersController@getProductSizes');
 
         // User Order Cancel
         // Route::get('/orders/{id}/cancel', 'OrdersController@orderCancel');

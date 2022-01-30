@@ -50,7 +50,6 @@
       <!-- Google Font: Source Sans Pro -->
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @endif
-  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -120,6 +119,7 @@
     $("#products").DataTable();
     $("#users").DataTable();
     $("#cmspages").DataTable();
+    $("#newsletter_subscribers").DataTable();
   });
 </script>
 

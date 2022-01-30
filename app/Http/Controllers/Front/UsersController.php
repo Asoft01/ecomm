@@ -39,6 +39,12 @@ class UsersController extends Controller
                 $user->password = bcrypt($data['password']);
                 $user->status= 0;
 
+              
+                date_default_timezone_set("Asia/Kolkata");
+                $user->created_at = date('Y-m-d H:i:s');
+                $user->updated_at = date('Y-m-d H:i:s');
+                $user->save();
+
                 // Curl Request to Create User in Basic E-Commerce Website
 
                 // $postdata = json_encode($data);
@@ -57,10 +63,7 @@ class UsersController extends Controller
                 curl_close($ch);
                 // print_r($result); die;
                 // Set Default Timezones to India for Users Model Only
-                date_default_timezone_set("Asia/Kolkata");
-                $user->created_at = date('Y-m-d H:i:s');
-                $user->updated_at = date('Y-m-d H:i:s');
-                $user->save();
+
 
                 // Send Confirmation Email to the user
                 $email = $data['email'];

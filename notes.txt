@@ -207,10 +207,19 @@ php artisan make:migration create_wishlists_table
 
 php artisan make:model Wishlist
 
-php artisan make:seeder WishlistsTableSeeder
+php artisan make:seeder WishlistsTableSeederx
 
 php artisan db:seed
 
 php artisan make:migration create_return_requests_table
 
 php artisan make:seeder ReturnRequestTableSeeder
+
+php artisan make:model ExchangeRequest
+php artisan make:seeder ExchangeRequestTableSeeder
+
+php artisan make:migration create_exchange_requests_table
+
+composer require maatwebsite/excel
+
+php artisan make:export subscribersExport

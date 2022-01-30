@@ -14,9 +14,12 @@ use App\User;
 use App\Sms;
 use App\OrderStatus;
 use App\ReturnRequest;
+use App\ExchangeRequest;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\ordersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrdersController extends Controller
 {
@@ -440,5 +443,49 @@ class OrdersController extends Controller
             session::flash('success_message', $message);
             return redirect('admin/return-requests');
         }
+    }
+
+    
+    public function exchangeRequests(){
+        Session::put('page', 'exchange-requests');
+        $exchange_requests = ExchangeRequest::get()->toArray();
+        // dd($exchange_requests);
+        return view('admin.orders.exchange_requests')->with(compact('exchange_requests'));
+    }
+
+    public function exchangeRequestUpdate(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            // echo "<pre>"; print_r($data); die;
+            
+            // Get Exchange Details
+            $exchangeDetails = ExchangeRequest::where('id', $data['exchange_id'])->first()->toArray();
+
+            // Update Exchange Status in Exchange_Request table
+            ExchangeRequest::where('id', $data['exchange_id'])->update(['exchange_status' => $data['exchange_status']]);
+
+            // Update Exchange Status in Orders Products Table
+            OrdersProduct::where(['order_id'=> $exchangeDetails['order_id'], 'product_code' => $exchangeDetails['product_code'], 'product_size'=> $exchangeDetails['product_size']])->update(['item_status'=> 'Exchange '.$data['exchange_status']]);
+            
+            // Get User Details 
+            $userDetails= User::select('name', 'email')->where('id', $exchangeDetails['user_id'])->first()->toArray();
+
+            // Send exchange Status Email 
+            $email = $userDetails['email'];
+            $exchange_status= $data['exchange_status'];
+
+            $messageData = ['userDetails' => $userDetails, 'exchangeDetails' => $exchangeDetails, 'exchange_status'=> $exchange_status];
+            Mail::send('emails.exchange_request', $messageData, function ($message) use($email, $exchange_status) {
+                $message->to($email)->subject('Exchange Request '.$exchange_status);
+            });
+
+            $message = 'Exchange Request has been '.$exchange_status. ' and email sent to user';
+            session::flash('success_message', $message);
+            return redirect('admin/exchange-requests');
+        }
+    }
+
+    public function exportOrders(){
+        return Excel::download(new ordersExport, 'orders.xlsx');
     }
 }

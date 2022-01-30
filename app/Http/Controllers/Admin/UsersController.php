@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Exports\usersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
@@ -52,5 +54,9 @@ class UsersController extends Controller
         $getUserCountries = User::select('country', DB::raw('count(country) as count'))->groupBy('country')->get()->toArray();
         // dd($getUserCountries);
         return view('admin.users.view_users_countries')->with(compact('getUserCountries'));
+    }
+
+    public function exportUsers(){
+        return Excel::download(new usersExport, 'users.xlsx');
     }
 }

@@ -291,6 +291,61 @@
                       <p>Return Requests</p>
                     </a>
                   </li>
+
+                <!-- Exchange Requests -->
+                @if(Session::get('page')=="exchange_requests")
+                  <?php $active= "active"; ?>
+                  @else
+                    <?php $active = ""; ?>
+                  @endif
+                  <li class="nav-item">
+                    <a href="{{ url('admin/exchange-requests') }}" class="nav-link {{ $active }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Exchange Requests</p>
+                    </a>
+                  </li>
+
+                  
+                <!-- Newsletter Subscriber -->
+                @if(Session::get('page')=="newsletter_subscriber")
+                  <?php $active= "active"; ?>
+                  @else
+                    <?php $active = ""; ?>
+                  @endif
+                  <li class="nav-item">
+                    <a href="{{ url('admin/newsletter-subscribers') }}" class="nav-link {{ $active }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Newsletter Subscriber</p>
+                    </a>
+                  </li> 
+
+                      
+                <!-- Import COD Pincodes-->
+                @if(Session::get('page')=="cod_pincodes")
+                <?php $active= "active"; ?>
+                @else
+                  <?php $active = ""; ?>
+                @endif
+                <li class="nav-item">
+                  <a href="{{ url('admin/update-cod-pincodes') }}" class="nav-link {{ $active }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Update COD Pincodes</p>
+                  </a>
+                </li> 
+
+                
+                <!-- Import Prepaid Pincodes-->
+                @if(Session::get('page')=="prepaid_pincodes")
+                <?php $active= "active"; ?>
+                @else
+                  <?php $active = ""; ?>
+                @endif
+                <li class="nav-item">
+                  <a href="{{ url('admin/update-prepaid-pincodes') }}" class="nav-link {{ $active }}">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Update Prepaid Pincodes</p>
+                  </a>
+                </li> 
             </ul>
           </li>
           
