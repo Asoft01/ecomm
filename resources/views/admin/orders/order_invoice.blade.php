@@ -128,8 +128,14 @@
     							<tr>
     								<td class="no-line"></td>
     								<td class="no-line"></td>
-    								<td class="no-line text-center"><strong>Shipping</strong></td>
-    								<td class="no-line text-right">INR 0</td>
+    								<td class="no-line text-center"><strong>Shipping Charges</strong></td>
+    								<td class="no-line text-right">INR {{ $orderDetails['shipping_charges'] }}</td>
+                                </tr>
+								<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>GST Charges</strong></td>
+    								<td class="no-line text-right">INR {{ $orderDetails['gst_charges'] }}</td>
                                 </tr>
                                 @if($orderDetails['coupon_amount'] >0)
                                 <tr>

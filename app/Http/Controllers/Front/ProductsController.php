@@ -600,6 +600,7 @@ class ProductsController extends Controller
         $total_price = 0;
         // dd($userCartItems);
         $total_weight= 0;
+        $totalGST = 0;
         foreach ($userCartItems as $item) {
             // echo "<pre>"; print_r($userCartItems); die;
             // echo "<pre>"; print_r($item); die;
@@ -608,6 +609,19 @@ class ProductsController extends Controller
             $total_weight= $total_weight + ($product_weight * $item['quantity']);
             $attrPrice = Product::getDiscountedAttrPrice($item['product_id'], $item['size']);
             $total_price = $total_price + ($attrPrice['final_price'] * $item['quantity']);
+
+            $product_total_price = $attrPrice['final_price'] * $item['quantity'];
+
+            // Calculate GST for Item
+            // echo $item['product_id']; die;
+            $getGSTPercent = Product::select('product_gst')->where('id', $item['product_id'])->first();
+            // echo $getGSTPercent->product_gst; die;
+
+            $gstPercent = $getGSTPercent->product_gst;
+            // echo $gstAmount = round($product_total_price * $gstPercent /100, 2); die;
+            $gstAmount = round($product_total_price * $gstPercent /100, 2);
+            // echo $totalGST = $totalGST + $gstAmount; die;
+            $totalGST = $totalGST + $gstAmount;
         }
 
         // echo $total_price; die;
@@ -641,13 +655,14 @@ class ProductsController extends Controller
             // echo $shippingCharges = ShippingCharge::getShippingCharges($total_weight, $value['country']); die;
             $shippingCharges = ShippingCharge::getShippingCharges($total_weight, $value['country']);
             $deliveryAddresses[$key]['shipping_charges'] = $shippingCharges;
+            $deliveryAddresses[$key]['gst_charges'] = $totalGST;
 
             // Check if delivery pincode exists in COD Pincodes list
             $deliveryAddresses[$key]['codpincodeCount'] = DB::table('cod_pincodes')->where('pincode', $value['pincode'])->count();
             // Check if delivery pincode exists in Prepaid Pincodes list
-            $deliveryAddresses[$key]['prepaidpincodeCount'] = DB::table('prepaid_pincodes')->where('pincode', $value['pincode'])->count();
-            
+            $deliveryAddresses[$key]['prepaidpincodeCount'] = DB::table('prepaid_pincodes')->where('pincode', $value['pincode'])->count();    
         }
+        
         // echo "<pre>"; print_r($deliveryAddresses); die;
 
         if($request->isMethod('post')){
@@ -729,7 +744,7 @@ class ProductsController extends Controller
             $shipping_charges = ShippingCharge::getShippingCharges($total_weight, $deliveryAddress['country']); 
 
             // Calculate Grand Total
-            $grand_total = $total_price + $shipping_charges - Session::get('couponAmount');
+            $grand_total = $total_price + $shipping_charges + $totalGST - Session::get('couponAmount');
 
             // Insert Grand Total in Session Variable
             Session::put('grand_total', $grand_total);
@@ -749,6 +764,7 @@ class ProductsController extends Controller
             $order->email= Auth::user()->email;
             // $order->shipping_charges= 0;
             $order->shipping_charges= $shipping_charges;
+            $order->gst_charges= $totalGST;
             $order->coupon_code= Session::get('couponCode');
             $order->coupon_amount= Session::get('couponAmount');
             // $order->order_status= "New";
@@ -842,7 +858,7 @@ class ProductsController extends Controller
         
         $meta_title = "Checkout Page - E-Commerce Website";
         
-        return view('front.products.checkout')->with(compact('userCartItems', 'deliveryAddresses', 'total_price', 'meta_title'));
+        return view('front.products.checkout')->with(compact('userCartItems', 'deliveryAddresses', 'total_price', 'meta_title', 'totalGST'));
     }
 
     public function thanks(){

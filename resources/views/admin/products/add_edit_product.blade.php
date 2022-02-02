@@ -110,12 +110,20 @@
                         <input type="text" class="form-control" name="product_price" id="product_price" placeholder="Enter Product Price" @if(!empty($productdata['product_price'])) value="{{ $productdata['product_price'] }}" @else value="{{ old('product_price') }}" @endif>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="product_discount">Product Discount (%)</label>
                         <input type="text" class="form-control" name="product_discount" id="product_discount" placeholder="Enter Product Discount" @if(!empty($productdata['product_discount'])) value="{{ $productdata['product_discount'] }}" @else value="{{ old('product_discount') }}" @endif>
                     </div>
+
+                    <div class="form-group">
+                        <label for="product_gst">Product GST (%)</label>
+                        <input type="text" class="form-control" name="product_gst" id="product_gst" placeholder="Enter Product gst" @if(!empty($productdata['product_gst'])) value="{{ $productdata['product_gst'] }}" @else value="{{ old('product_gst') }}" @endif>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="product_weight">Product Weight</label>
                         <input type="text" class="form-control" name="product_weight" id="product_weight" placeholder="Enter Product Weight" @if(!empty($productdata['product_weight'])) value="{{ $productdata['product_weight'] }}" @else value="{{ old('product_weight') }}" @endif>
