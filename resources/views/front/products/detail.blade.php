@@ -137,7 +137,8 @@ use App\Wishlist;
         
             <hr class="soft clr"/>
             <p class="span6">
-                {{ $productDetails['description'] }}
+                {{-- {{ $productDetails['description'] }} --}}
+                <?php echo $productDetails['description']; ?>
                 
             </p>
             <a class="btn btn-small pull-right" href="#detail">More Details</a>
@@ -183,7 +184,8 @@ use App\Wishlist;
                     </table>
                     
                     <h5>Washcare</h5>
-                    <p>{{ $productDetails['wash_care'] }}</p>
+                    {{-- <p>{{ $productDetails['wash_care'] }}</p> --}}
+                    <p><?php echo $productDetails['wash_care'] ?> </p>
                     <h5>Disclaimer</h5>
                     <p>
                         There may be a slight color variation between the image shown and original product.

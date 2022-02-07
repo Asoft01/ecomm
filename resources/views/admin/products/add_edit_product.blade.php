@@ -175,7 +175,7 @@
                     
                     <div class="form-group">
                         <label for="description">Product Description</label>
-                        <textarea name="description" id="description" class="form-control" rows="3" placeholder="Enter..."> @if(!empty($productdata['description'])) {{ $productdata['description'] }} @else {{ old('description') }} @endif</textarea>
+                        <textarea name="description" id="description" class="form-control textarea" rows="3" placeholder="Enter..."> @if(!empty($productdata['description'])) {{ $productdata['description'] }} @else {{ old('description') }} @endif</textarea>
                     </div>
                     <!-- /.form-group -->
                 </div>
@@ -183,7 +183,7 @@
                 <div class="col-12 col-sm-6">
                     <div class="form-group">
                         <label for="wash_care">Wash Care</label>
-                        <textarea name="wash_care" id="wash_care" class="form-control" rows="3" placeholder="Enter..."> @if(!empty($productdata['wash_care'])) {{ $productdata['wash_care'] }} @else {{ old('wash_care') }} @endif</textarea>
+                        <textarea name="wash_care" id="wash_care" class="form-control textarea" rows="3" placeholder="Enter..."> @if(!empty($productdata['wash_care'])) {{ $productdata['wash_care'] }} @else {{ old('wash_care') }} @endif</textarea>
                     </div>
                     <div class="form-group">
                         <label>Select Fabric</label>

@@ -31,6 +31,8 @@
         <link rel="stylesheet" href="{{ secure_asset('css/front_css/font-awesome.css') }}">
         <link rel="stylesheet" href="{{ secure_asset('css/front_css/style.css') }}">
         <link rel="stylesheet" href="{{ secure_asset('js/front_js/js/google-code-prettify/prettify.css') }}">
+	 	 <!-- summernote -->
+        <link rel="stylesheet" href="{{ secure_asset('plugins/summernote/summernote-bs4.min.css') }}">
         <link rel="shortcut icon" href="{{ secure_asset('images/front_images/ico/favicon.ico') }}">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ secure_asset('images/front_images/ico/apple-touch-icon-144-precomposed.png') }}">
         <link rel="apple-touch-icon-precomposed"  sizes="72x72" href="{{ secure_asset('images/front_images/ico/apple-touch-icon-72-precomposed.png') }}">
@@ -48,6 +50,7 @@
 		<link href="{{ url('js/front_js/js/google-code-prettify/prettify.css') }}" rel="stylesheet"/>
 		<!-- fav and touch icons -->
 		<link rel="shortcut icon" href="{{asset('images/front_images/ico/favicon.ico') }}">
+        <link rel="stylesheet" href="{{ url('plugins/summernote/summernote-bs4.min.css') }}">
 		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('images/front_images/ico/apple-touch-icon-144-precomposed.png') }}">
 		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('images/front_images/ico/apple-touch-icon-114-precomposed.png') }}">
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('images/front_images/ico/apple-touch-icon-72-precomposed.png') }}">
@@ -95,6 +98,8 @@
         <script src="{{ secure_asset('js/front_js/front.js') }}"></script>
         <script src="{{ secure_asset('js/front_js/front_script.js') }}"></script>
         <script src="{{ secure_asset('js/front_js/jquery.lightbox-0.5.js') }}"></script>	
+		
+		<script src="{{ secure_asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
 
     @else
 		<script src="{{ url('js/front_js/jquery.js') }}" type="text/javascript"></script>
@@ -105,6 +110,15 @@
 		<script src="{{ url('js/front_js/front.js') }}"></script>
 		<script src="{{ url('js/front_js/front_script.js') }}"></script>
 		<script src="{{ url('js/front_js/jquery.lightbox-0.5.js') }}"></script>
+		<!-- Summernote -->
+		<script src="{{ url('plugins/summernote/summernote-bs4.min.js') }}"></script>
+
+		<script>
+			$function () {
+				// Summernotes 
+				$('.textarea').summernote();
+			}
+		</script>
     @endif 
 
 </body>

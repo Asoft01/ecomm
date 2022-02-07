@@ -35,7 +35,6 @@ class AdminsTableSeeder extends Seeder
             
         ];
         
-        DB::table('admins')->insert($adminRecords);
         
         // For inserting one admin records
         // foreach ($adminRecords as $key => $record) {
