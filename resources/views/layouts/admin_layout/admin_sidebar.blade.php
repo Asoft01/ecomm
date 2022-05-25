@@ -30,6 +30,7 @@
                  @else
                   <?php $active = ""; ?>
                  @endif
+                 
                 <a href="{{ url('admin/dashboard') }}" class="nav-link {{ $active }}">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>

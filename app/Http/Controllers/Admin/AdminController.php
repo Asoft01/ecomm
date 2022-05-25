@@ -21,6 +21,7 @@ class AdminController extends Controller
     }
 
     public function settings(){
+        
         Session::put('page', 'settings');
         // echo "<pre>"; print_r(Auth::guard('admin')->user()); die;
         // Auth::guard('admin')->user()->id;
@@ -110,6 +111,7 @@ class AdminController extends Controller
             $rules = [
                 'admin_name'=> 'required|regex:/^[\pL\s-]+$/u',
                 'admin_mobile' => 'required|numeric',
+                // 'admin_image' => 'image|mimes:jpeg,jpg,png,gif,svg|max:2048'
                 'admin_image'=> 'image'
             ];
             $customMessages = [
@@ -214,6 +216,7 @@ class AdminController extends Controller
                     return redirect('admin/admins-subadmins');
                 }
             }
+
             $rules = [
                 'admin_name'=> 'required|regex:/^[\pL\s-]+$/u',
                 'admin_mobile' => 'required|numeric',
@@ -317,7 +320,7 @@ class AdminController extends Controller
         $adminDetails = Admin::where('id', $id)->first()->toArray();
         $adminRoles = AdminsRole::where('admin_id', $id)->get()->toArray();
         $title = "Update " .$adminDetails['name']." (".$adminDetails['type'].") Roles / Permissions";
-        return view('admin.admins_subadmins.update_roles')->with(compact('title', 'adminDetails', 'adminRoles'));       
+        return view('admin.admins_subadmins.update_roles')->with(compact('title', 'adminDetails', 'adminRoles'));
     }
 
     public function updateOtherSettings(Request $request){
