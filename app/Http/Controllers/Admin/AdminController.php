@@ -181,6 +181,7 @@ class AdminController extends Controller
         }
     }
 
+
     public function deleteAdminSubAdmin($id){
         // Delete Admin Sub Admin
         Admin::where('id', $id)->delete();

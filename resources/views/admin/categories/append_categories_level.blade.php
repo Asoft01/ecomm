@@ -1,4 +1,4 @@
-xa<div class="form-group">
+<div class="form-group">
     <label>Category Level</label>
     <select name="parent_id" id="parent_id" class="form-control select2" style="width: 100%;">
         <option value="0" @if(isset($categorydata['parent_id']) && $categorydata['parent_id'] == 0) selected ="" @endif>Main Category</option>
