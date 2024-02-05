@@ -7,11 +7,3 @@
 ===========bank details 
 ===========payment methods 
 ===========shipping types 
-===========store pickups 
-===========maintenance 
-===========Delete store
-====== store appearance
-=========== Themes
-Create Product (Create Category, Add New Shipping Type)
-List Products
-
